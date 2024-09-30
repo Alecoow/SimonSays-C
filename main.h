@@ -3,6 +3,18 @@
 
 #endif //MAIN_H
 
+void ClearConsole(int score) {
+    system("cls");
+    char score_buffer[24];
+    sprintf_s(score_buffer, sizeof(score_buffer), "Score: %d", score);
+    int score_offset = strlen(score_buffer);
+    printf("\x1b[0;%iH", 120-score_offset);
+    printf("%s\n", score_buffer);
+    printf("\x1b[0;80H");
+    printf("PowerUps: %s", "");
+    printf("\x1b[H");
+}
+
 void PopulateList(const int dimensions, const int size, char** list) {
     for (int i = 0; i < dimensions; i++) {
         for (int j = 0; j < size; j++) {
