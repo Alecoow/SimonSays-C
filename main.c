@@ -90,6 +90,7 @@ int main(void) {
         Sleep((int)(1000 * time_multiplier));
 
         printf("Enter the sequence, separated by commas:\n");
+        time_multiplier = 1.0f;
 
         char buffer[100];
         memset(buffer, 0, 100);
@@ -103,9 +104,11 @@ int main(void) {
             else {
                 score = ++score * score_multiplier;
             }
-            if (rand() % 5 == 0) {
+            if (rand() % 3 == 0) {
                 challenge = StartChallenge();
                 challenge_active = true;
+            } else {
+                challenge_active = false;
             }
         } else if (result == 0) {
             printf("Incorrect! Repeating level %i\n", level); --difficulty;
