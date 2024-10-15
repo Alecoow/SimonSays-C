@@ -124,12 +124,13 @@ int main(void) {
                 score = score - (1 * score_multiplier);
             }
         } else {
-            printf("Invalid character(s)! Try again %i\n", level); --difficulty;
+            printf("Invalid character(s)! Try again\n"); --difficulty;
         }
         Sleep(2000);
         ClearConsole(score, level);
         score_multiplier = 1;
     }
     printf("Final Score: %d", score);
+    Sleep(5000);
     return 0;
 }
