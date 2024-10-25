@@ -102,8 +102,8 @@ enum CHALLENGES {
     LIGHTNING_ROUND = 1 << 4
 };
 
-int StartChallenge() {
-    int challenges[] = {DOUBLE_OR_NOTHING, EXTRA_LIFE, SCORE_MULTIPLIER, LIGHTNING_ROUND};
+int StartEvent() {
+    int events[] = {DOUBLE_OR_NOTHING, EXTRA_LIFE, SCORE_MULTIPLIER, LIGHTNING_ROUND};
     int random_index = rand() % 4;
-    return challenges[random_index];
+    return events[random_index];
 }

@@ -21,8 +21,8 @@ int main(void) {
     float time_multiplier = 1.0f;
     bool extra_life = false;
     ClearConsole(score, level);
-    int challenge = 0;
-    bool challenge_active = false;
+    int event = 0;
+    bool event_active = false;
     // Game ends
 
 
@@ -44,9 +44,9 @@ int main(void) {
             difficulty = 1;
         }
 
-        if (challenge_active) {
-            printf("Challenge Started: ");
-            switch(challenge) {
+        if (event_active) {
+            printf("Event Started: ");
+            switch(event) {
             case DOUBLE_OR_NOTHING: // DOUBLE_OR_NOTHING
                 printf("Double or Nothing\n");
                 break;
@@ -98,17 +98,17 @@ int main(void) {
         int result = CompareAnswer(buffer, flattened_array, dimensions * difficulty);
         if (result == 1) {
             printf("Good job! Moving to level %i\n", ++level);
-            if (challenge == DOUBLE_OR_NOTHING) {
+            if (event == DOUBLE_OR_NOTHING) {
                 score = score * 2;
             }
             else {
                 score = ++score * score_multiplier;
             }
             if (rand() % 3 == 0) {
-                challenge = StartChallenge();
-                challenge_active = true;
+                event = StartEvent();
+                event_active = true;
             } else {
-                challenge_active = false;
+                event_active = false;
             }
         } else if (result == 0) {
             printf("Incorrect! Repeating level %i\n", level); --difficulty;
@@ -117,7 +117,7 @@ int main(void) {
                 printf("Extra life is no longer active");
                 extra_life = false;
             }
-            else if (challenge == 1) { // DOUBLE_OR_NOTHING
+            else if (event == 1) { // DOUBLE_OR_NOTHING
                 score = 0;
             }
             else {
